@@ -13,33 +13,26 @@ class UserController extends Controller
         'interes'])->get();
     }
 
-    public function store(Request $request)
-    {
-        $user = User::create($request->all());
-        return response()->json($user, 201);
-    }
-
-    public function show(User $user)
-    {
-        return $user;
-    }
-
-    public function update(Request $request, User $user)
+    public function update(Request $request,$id)
     {
         try{
-            $user = User::find($user->id);
-            $fields  = $request->validate([
-                'nombre'=>'required|string',
-                'correo'=>'required|email',
-                'edad'=>'required|string',
-                'carrera'=>'required|string',
-                'ciudad'=>'required|string',
-                'pais'=>'required|string',
-            ]);
-            $usuario->update($fields);
+
+            $usuario = User::where('id',$request->id)->update(
+                [
+                    'nombre'=>$request->nombre,
+                    'correo'=>$request->correo,
+                    'edad'=>$request->edad,
+                    'carrera'=>$request->carrera,
+                    'ciudad'=>$request->ciudad,
+                    'pais'=>$request->pais,
+                ]
+            );
             return response()->json($usuario,200);
         }catch(\Exception $e){
-            throw new \Exception($e->getMessage());
+            return response()->json([
+                'message' => 'Error al actualizar el producto',
+                'error' => $e->getMessage()
+            ], 400);
         }
     }
 
