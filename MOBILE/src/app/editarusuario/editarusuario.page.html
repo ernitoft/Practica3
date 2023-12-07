@@ -23,24 +23,23 @@
         <ion-card-content>
             <form [formGroup]="form" (ngSubmit)="onSubmit()">
                 <ion-item>
-                    <ion-input formControlName="nombre" label="Nombre:"  placeholder="{{data[0].nombre}}"> </ion-input>
+                    <ion-input formControlName="nombre" label="Nombre:"  placeholder="{{data[0].nombre}}" required> </ion-input>
                   </ion-item>
                   <ion-item>
-                    <ion-input formControlName="edad" label="Edad:"  placeholder="{{data[0].edad}}"> </ion-input>
+                    <ion-input formControlName="edad" label="Edad:"  placeholder="{{data[0].edad}}"required> </ion-input>
                   </ion-item>
                   <ion-item>
-                    <ion-input formControlName="correo" label="Correo:"  placeholder="{{data[0].correo}}"> </ion-input>
+                    <ion-input formControlName="correo" label="Correo:"  placeholder="{{data[0].correo}}"required> </ion-input>
                   </ion-item>
                   <ion-item>
-                    <ion-input formControlName="carrera" label="Carrera:"  placeholder="{{data[0].carrera}}"> </ion-input>
+                    <ion-input formControlName="carrera" label="Carrera:"  placeholder="{{data[0].carrera}}"required> </ion-input>
                   </ion-item>
                   <ion-item>
-                    <ion-input formControlName="ciudad" label="Ciudad:"  placeholder="{{data[0].ciudad}}"> </ion-input>
+                    <ion-input formControlName="ciudad" label="Ciudad:"  placeholder="{{data[0].ciudad}}"required> </ion-input>
                   </ion-item>
                   <ion-item>
-                    <ion-input formControlName="pais" label="Pais:"  placeholder="{{data[0].pais}}"> </ion-input>
+                    <ion-input formControlName="pais" label="Pais:"  placeholder="{{data[0].pais}}"required> </ion-input>
                   </ion-item>
-            
                 <ion-button type="submit" >Editar</ion-button>
             </form>
         </ion-card-content>
