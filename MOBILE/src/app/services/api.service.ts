@@ -5,16 +5,16 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ApiService {
-  private endPoint = 'http://127.0.0.1:8000/api/profile ';
+  private endPoint = 'http://127.0.0.1:8000/api';
   
   constructor(private http: HttpClient) { }
 
   public getProfile() {
-    return this.http.get<any>(this.endPoint);
+    return this.http.get<any>(this.endPoint+"/profile");
   }
 
   public updateProfile(profile: any) {
-    return this.http.put<any>(this.endPoint+"/update/"+profile.id, profile);
+    return this.http.patch<any>(this.endPoint+"/update/"+profile.id, profile);
   }
 
   public updateInterests(interes: any) {

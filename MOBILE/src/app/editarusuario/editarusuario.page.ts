@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { Router } from '@angular/router';
-import { NavController } from '@ionic/angular';
+import {
+  FormGroup,
+  FormControl,
+  FormBuilder,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-editarusuario',
@@ -13,18 +18,25 @@ export class EditarusuarioPage implements OnInit {
   data: any = [];
   tecnologias: any = [];
   interes: any = [];
+  isHidden: boolean = false;
+  form: FormGroup;
 
-  constructor(private apiService: ApiService, public router: Router, public navCtrl: NavController) { }
+  constructor(private apiService: ApiService, public router: Router, public fb: FormBuilder) 
+  {
+    this.form = this.fb.group({
+      "nombre": new FormControl("", Validators.required),
+      "edad": new FormControl("", Validators.required),
+      "correo": new FormControl("", Validators.required),
+      "carrera": new FormControl("", Validators.required),
+      "ciudad": new FormControl("", Validators.required),
+      "pais": new FormControl("", Validators.required),
+      "id": new FormControl("", Validators.required)
+    });
+   }
 
   ngOnInit() {
     this.rellenoDatos();
   }
-
-irEditarUsuario() {
-  this.router.navigate(['/editarusuario']);
-}
-
-
   rellenoDatos() {
     this.apiService.getProfile().subscribe((data) => {
       this.data = data;
@@ -32,7 +44,14 @@ irEditarUsuario() {
       this.interes = this.data[0].interes;
     });
   }
-  navegarEditar() {
-    this.router.navigate(['edit-usuario']);
+  onSubmit() {
+    this.form.value.id = this.data[0].id;
+    console.log(this.form.value);
+    this.apiService.updateProfile(this.form.value).subscribe((data) => {
+      this.data = data;
+      this.rellenoDatos();
+      this.form.reset();
+    });
   }
 }
+

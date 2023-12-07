@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { Router } from '@angular/router';
-import { NavController } from '@ionic/angular';
 @Component({
   selector: 'app-perfil',
   templateUrl: './perfil.page.html',
@@ -14,7 +13,7 @@ export class PerfilPage implements OnInit {
   tecnologias: any = [];
   interes: any = [];
 
-  constructor(private apiService: ApiService, public router: Router, public navCtrl: NavController) { }
+  constructor(private apiService: ApiService, public router: Router) { }
 
   ngOnInit() {
     this.rellenoDatos();

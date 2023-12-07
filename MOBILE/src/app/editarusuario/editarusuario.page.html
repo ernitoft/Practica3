@@ -1,0 +1,50 @@
+<ion-header [translucent]="true">
+    <ion-toolbar color="light">
+        <ion-title>
+            Practica 3
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <ion-header>
+        <ion-toolbar color="light">
+            <ion-title size="large">Perfil</ion-title>
+        </ion-toolbar>
+    </ion-header>
+
+    <ion-card color="danger">
+        <img alt="img" src="assets/img/imgProfile.png" />
+        <ion-card-header>
+          <ion-card-title>{{data[0].nombre}}</ion-card-title>
+          <ion-card-subtitle>Información personal</ion-card-subtitle>
+        </ion-card-header>
+      
+        <ion-card-content>
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                <ion-item>
+                    <ion-input formControlName="nombre" label="Nombre:"  placeholder="{{data[0].nombre}}"> </ion-input>
+                  </ion-item>
+                  <ion-item>
+                    <ion-input formControlName="edad" label="Edad:"  placeholder="{{data[0].edad}}"> </ion-input>
+                  </ion-item>
+                  <ion-item>
+                    <ion-input formControlName="correo" label="Correo:"  placeholder="{{data[0].correo}}"> </ion-input>
+                  </ion-item>
+                  <ion-item>
+                    <ion-input formControlName="carrera" label="Carrera:"  placeholder="{{data[0].carrera}}"> </ion-input>
+                  </ion-item>
+                  <ion-item>
+                    <ion-input formControlName="ciudad" label="Ciudad:"  placeholder="{{data[0].ciudad}}"> </ion-input>
+                  </ion-item>
+                  <ion-item>
+                    <ion-input formControlName="pais" label="Pais:"  placeholder="{{data[0].pais}}"> </ion-input>
+                  </ion-item>
+            
+                <ion-button type="submit" >Editar</ion-button>
+            </form>
+        </ion-card-content>
+      </ion-card>
+
+</ion-content>
+

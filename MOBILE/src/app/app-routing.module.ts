@@ -1,17 +1,11 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { EditarusuarioPageModule } from './editarusuario/editarusuario.module';
-import { EditarusuarioPage } from './editarusuario/editarusuario.page';
+
 
 const routes: Routes = [
   {
     path: 'perfil',
     loadChildren: () => import('./perfil/perfil.module').then(m => m.PerfilPageModule)
-  },
-  {
-    path: 'perfil',
-    redirectTo: 'perfil',
-    pathMatch: 'full'
   },
   {
     path: 'editarusuario',
@@ -25,6 +19,10 @@ const routes: Routes = [
   {
     path: 'editarinteres',
     loadChildren: () => import('./editarinteres/editarinteres.module').then(m => m.EditarinteresPageModule)
+  },{
+    path: '',
+    redirectTo: 'perfil',
+    pathMatch: 'full'
   },
 ];
 
